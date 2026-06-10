@@ -84,7 +84,7 @@ def generate():
     except Exception as e:
         error_str = str(e)
         if '429' in error_str or 'RESOURCE_EXHAUSTED' in error_str:
-            return jsonify({"response": "I'm receiving too many requests right now! Google's Free Tier limits me to 20 messages per minute. Please wait about 30 seconds and try again! ⏳", "prompt_used": "Rate Limit Reached"}), 200
+            return jsonify({"response": "I'm receiving too many requests right now! Google's Free Tier limits me to 20 messages per day on this API Key. Please try again tomorrow, or add billing to your Google Cloud account! ⏳", "prompt_used": "Rate Limit Reached"}), 200
         return jsonify({"error": error_str}), 500
 
 @app.route('/feedback', methods=['POST'])
