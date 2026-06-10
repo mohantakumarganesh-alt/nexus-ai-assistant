@@ -2,3 +2,6 @@ flask
 google-genai
 python-dotenv
 gunicorn
+groq
+cohere
+huggingface_hub
