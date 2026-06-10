@@ -445,3 +445,76 @@ textarea::placeholder { color: rgba(255,255,255,0.3); }
     0%, 100% { transform: scale(0.8); opacity: 0.4; }
     50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 10px rgba(196, 181, 253, 0.8); }
 }
+
+/* Responsive Design */
+@media (max-width: 850px) {
+    .app-container {
+        flex-direction: column;
+        height: 96vh;
+        width: 96%;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 16px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-height: 35vh;
+        overflow-y: auto;
+    }
+
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+    .brand {
+        margin-bottom: 16px;
+        width: 100%;
+        justify-content: center;
+        font-size: 22px;
+    }
+
+    .function-nav, .style-selector {
+        width: 48%;
+        margin-bottom: 0;
+    }
+
+    .top-bar {
+        padding: 16px 20px;
+    }
+
+    .top-bar h1 {
+        font-size: 22px;
+    }
+
+    .chat-area {
+        padding: 16px 20px;
+    }
+
+    .input-area {
+        padding: 16px 20px;
+    }
+
+    .message {
+        max-width: 95%;
+        padding: 14px 18px;
+    }
+}
+
+@media (max-width: 550px) {
+    .function-nav, .style-selector {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    
+    .sidebar {
+        max-height: 45vh;
+    }
+
+    .brand i {
+        font-size: 24px;
+    }
+}
