@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="aurora-bg">
+        <div class="aurora-orb orb-1"></div>
+        <div class="aurora-orb orb-2"></div>
+        <div class="aurora-orb orb-3"></div>
+        <div class="aurora-orb orb-4"></div>
+    </div>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-robot"></i>
+                <h2>Nexus AI</h2>
+            </div>
+            
+            <nav class="function-nav">
+                <h3>Functions</h3>
+                <button class="nav-btn active" data-func="question">
+                    <i class="fa-solid fa-circle-question"></i> Answer Questions
+                </button>
+                <button class="nav-btn" data-func="summarize">
+                    <i class="fa-solid fa-align-left"></i> Summarize Text
+                </button>
+                <button class="nav-btn" data-func="creative">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Creative Content
+                </button>
+            </nav>
+
+            <div class="style-selector">
+                <h3>Prompt Style</h3>
+                <div id="style-options">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 id="current-function-title">Answer Questions</h1>
+                <p id="current-function-desc">Ask any factual question and get an instant answer.</p>
+            </header>
+
+            <div class="chat-area" id="chat-area">
+                <div class="welcome-message">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <p>Hello! I'm Nexus, your AI Assistant. Select a function and enter your prompt below.</p>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <textarea id="user-input" placeholder="Type your prompt here..." rows="3"></textarea>
+                    <button id="send-btn" class="send-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
