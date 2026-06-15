@@ -503,3 +503,43 @@
     .legal-section ul li,
     .legal-section ol li { font-size: 13px; }
 }
+
+/* ── Prevent horizontal overflow on narrow mobile screens ── */
+@media (max-width: 600px) {
+    /* Navbar Wrapping */
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        padding-bottom: 6px;
+    }
+    .nav-brand {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 4px;
+    }
+    .nav-container > div {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    /* Increase padding so taller navbar doesn't cover content */
+    .legal-page {
+        padding-top: 140px;
+    }
+    
+    /* Make buttons smaller to fit */
+    .nav-back {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Force word breaks for long URLs or email addresses */
+.legal-section p, 
+.legal-section li, 
+.contact-card,
+.legal-subtitle {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
