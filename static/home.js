@@ -150,23 +150,8 @@ if (statsSection) {
     }, { threshold: 0.5 }).observe(statsSection);
 }
 
-// ── 7. Feature card hover tilt (desktop only) ─────
-if (window.matchMedia('(min-width: 769px)').matches) {
-    document.querySelectorAll('.demo-card, .provider-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            card.style.transform = `translateY(-4px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
-            card.style.transition = 'transform 0.1s ease';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-            card.style.transition = 'transform 0.4s ease';
-        });
-    });
-}
+// ── 7. Removed (Feature card hover tilt) ────────────
+// Bug: Conflicted with CSS hover effects causing jitter. We rely on elegant CSS hover now.
 
 // ── 8. Timeline step — highlight on scroll ─────────
 const timelineSteps = document.querySelectorAll('.timeline-step');
