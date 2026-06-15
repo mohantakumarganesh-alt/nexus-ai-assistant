@@ -9,13 +9,21 @@ Nexus AI is a sleek, web-based AI assistant powered by a **multi-LLM fallback en
 ## ✨ Features
 
 - **Multi-LLM Fallback Engine**: Automatically switches between 5 AI providers when rate limits are hit — no manual intervention needed.
+- **Chat History (Local Storage)**: Conversations are saved securely in your browser so you never lose your progress on a page refresh.
+- **Voice Dictation**: Built-in microphone support to dictate prompts directly into the chat.
+- **Pro Chat Controls**:
+  - **Stop Generation**: Instantly abort long-running AI requests.
+  - **Edit & Resubmit**: Easily edit a previously sent question to tweak the response.
+  - **Copy to Clipboard**: One-click copy buttons for code blocks, full AI responses, and your own questions.
+  - **Export Chat**: Download your entire conversation history as a `.txt` file.
+  - **Clear Chat**: Instantly wipe your local history for a fresh start.
 - **Multi-Functional Operations**:
   - **Answer Questions**: Acts as a personal tutor or encyclopedia.
   - **Summarize Text**: Condenses long documents into concise summaries.
   - **Creative Content**: Generates stories, poems, and humorous text.
 - **Dynamic Prompt Styles**: Each function has three distinct output styles (e.g., *Explain Like I'm 5*, *Bullet Points*, *Poem*) to customize how the AI responds.
-- **Conversational Memory**: The AI remembers previous messages within a session for natural follow-up questions.
-- **Beautiful Responsive UI**: Full-screen dark mode with aurora background, glassmorphism, micro-animations, and full **Markdown rendering**. Works seamlessly on desktop, tablet, and mobile (including iOS safe areas).
+- **Beautiful Responsive UI**: Full-screen dark mode with aurora background, glassmorphism, micro-animations, **Syntax Highlighting** for code, and full **Markdown rendering**. Works seamlessly on desktop, tablet, and mobile (including iOS safe areas).
+- **Cinematic Landing Page**: Features an elegant, glassmorphic slide-up page transition animation before launching the main app.
 - **Feedback Loop**: Users can rate responses (👍/👎), logged locally to `feedback.json` for analysis.
 
 ---
@@ -81,11 +89,11 @@ GEMINI_API_KEY=your_gemini_api_key_here
 # Get key: https://console.groq.com
 GROQ_API_KEY=your_groq_api_key_here
 
-# Fallback 3 — Cohere (5,000 req/month free)
+# Fallback 2 — Cohere (5,000 req/month free)
 # Get key: https://dashboard.cohere.com
 COHERE_API_KEY=your_cohere_api_key_here
 
-# Fallback 4 — HuggingFace (~300 req/day free)
+# Fallback 3 — HuggingFace (~300 req/day free)
 # Get key: https://huggingface.co/settings/tokens
 HUGGINGFACE_API_KEY=your_huggingface_api_key_here
 ```
@@ -128,8 +136,9 @@ This project includes a `render.yaml` for one-click deployment to [Render.com](h
 1. **Select a Function** — Use the sidebar (desktop) or top pill nav (mobile) to choose: Answer, Summarize, or Creative.
 2. **Choose a Style** — Select the tone or format for the response.
 3. **Chat** — Type your input and press Send.
-   > *Changing the Function or Style resets conversation memory for a fresh start.*
-4. **Feedback** — Click 👍 or 👎 under any response to log feedback.
+   > *You can change the Function or Style mid-conversation without losing your chat history!*
+4. **Pro Actions** — Hover over messages to copy or edit them. Use the sidebar to Clear or Export your chat history.
+5. **Feedback** — Click 👍 or 👎 under any response to log feedback.
 
 ---
 
@@ -145,9 +154,12 @@ nexus-ai-assistant/
 ├── render.yaml         # Render deployment config
 ├── .env                # API keys (not committed to git)
 ├── templates/
-│   └── index.html      # Main UI template
+│   ├── home.html       # Landing page
+│   └── index.html      # Main Chat UI template
 └── static/
-    ├── style.css        # Full responsive dark theme CSS
+    ├── home.css         # Landing page styles & transition animation
+    ├── home.js          # Landing page interaction logic
+    ├── style.css        # Full responsive dark theme CSS for chat
     └── script.js        # Frontend logic & chat handling
 ```
 

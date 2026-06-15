@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Assistant</title>
+    <title>Nexus AI — Chat</title>
+    <meta name="description" content="Chat with Nexus AI — answer questions, summarize content, and generate creative writing powered by multiple LLM providers.">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
@@ -19,8 +22,10 @@
     <div class="app-container">
         <aside class="sidebar">
             <div class="brand">
-                <i class="fa-solid fa-robot"></i>
-                <h2>Nexus AI</h2>
+                <a href="/" class="brand-link" title="Go to Home" id="brand-home-link">
+                    <i class="fa-solid fa-robot"></i>
+                    <h2>Nexus AI</h2>
+                </a>
             </div>
             
             <nav class="function-nav">
@@ -42,6 +47,16 @@
                     <!-- Populated by JS -->
                 </div>
             </div>
+
+            <div class="chat-actions">
+                <h3>Chat Actions</h3>
+                <button class="action-btn" id="clear-chat-btn">
+                    <i class="fa-solid fa-trash-can"></i> Clear Chat
+                </button>
+                <button class="action-btn" id="export-chat-btn">
+                    <i class="fa-solid fa-download"></i> Export Chat
+                </button>
+            </div>
         </aside>
 
         <main class="main-content">
@@ -60,13 +75,46 @@
             <div class="input-area">
                 <div class="input-wrapper">
                     <textarea id="user-input" placeholder="Type your prompt here..." rows="3"></textarea>
-                    <button id="send-btn" class="send-btn">
+                    <button id="mic-btn" class="mic-btn" aria-label="Voice Input">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <button id="send-btn" class="send-btn" aria-label="Send Message">
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- Chat Page Footer -->
+    <footer class="chat-footer" id="chat-footer">
+        <div class="chat-footer-inner">
+            <span class="footer-left">
+                <a href="/" class="footer-home-link" id="footer-home-link">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+                <a href="/terms" class="footer-home-link" id="footer-terms-link" style="margin-left:6px;">
+                    <i class="fa-solid fa-file-contract"></i> Terms
+                </a>
+                <a href="/privacy" class="footer-home-link" id="footer-privacy-link" style="margin-left:6px;">
+                    <i class="fa-solid fa-shield-halved"></i> Privacy
+                </a>
+                <a href="https://github.com/mohantakumarganesh-alt/nexus-ai-assistant" target="_blank" rel="noopener" class="footer-home-link" style="margin-left:6px;" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ganeshkumarmohanta" target="_blank" rel="noopener" class="footer-home-link" style="margin-left:6px;" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </span>
+            <span class="footer-center">
+                <i class="fa-solid fa-robot"></i> AI responses may be inaccurate — always verify.
+            </span>
+            <span class="footer-right">
+                © 2026 <strong>Nexus AI</strong>
+            </span>
+        </div>
+    </footer>
+
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

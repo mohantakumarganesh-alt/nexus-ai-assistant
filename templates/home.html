@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI — Your Intelligent Assistant</title>
+    <meta name="description" content="Nexus AI is your powerful AI assistant for answering questions, summarizing content, and generating creative output — all in one beautiful interface.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="home-body">
+    <!-- Aurora Background -->
+    <div class="aurora-bg">
+        <div class="aurora-orb orb-1"></div>
+        <div class="aurora-orb orb-2"></div>
+        <div class="aurora-orb orb-3"></div>
+        <div class="aurora-orb orb-4"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="home-nav" id="home-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-brand" id="nav-brand-link">
+                <i class="fa-solid fa-robot"></i>
+                <span>Nexus AI</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#features" class="nav-link" id="nav-features">Features</a>
+                <a href="#how-it-works" class="nav-link" id="nav-how">How It Works</a>
+                <a href="#providers" class="nav-link" id="nav-providers">Providers</a>
+                <a href="/chat" class="nav-cta" id="nav-launch-btn">
+                    <i class="fa-solid fa-rocket"></i> Launch App
+                </a>
+            </div>
+            <!-- Mobile hamburger -->
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <!-- Mobile drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <a href="#features" class="mobile-nav-link">Features</a>
+            <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="#providers" class="mobile-nav-link">Providers</a>
+            <a href="/chat" class="mobile-nav-cta">
+                <i class="fa-solid fa-rocket"></i> Launch App
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+        <div class="hero-badge" id="hero-badge">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>Powered by Multi-LLM Intelligence</span>
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+            Your AI Assistant,<br>
+            <span class="gradient-text">Reimagined.</span>
+        </h1>
+
+        <p class="hero-subtitle" id="hero-subtitle">
+            Nexus AI combines multiple cutting-edge language models to answer your questions,
+            summarize content, and spark creative ideas — all in a stunning, fast interface.
+        </p>
+
+        <div class="hero-actions" id="hero-actions">
+            <a href="/chat" class="btn-primary" id="hero-cta-btn">
+                <i class="fa-solid fa-bolt"></i>
+                Start Chatting Free
+            </a>
+            <a href="#features" class="btn-ghost" id="hero-learn-btn">
+                <i class="fa-solid fa-circle-play"></i>
+                See Features
+            </a>
+        </div>
+
+        <div class="hero-stats" id="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="4" data-suffix="+">4+</span>
+                <span class="stat-label">AI Providers</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="3" data-suffix="">3</span>
+                <span class="stat-label">Core Modes</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="9" data-suffix="">9</span>
+                <span class="stat-label">Prompt Styles</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="0" data-suffix="$">$0</span>
+                <span class="stat-label">Cost to Start</span>
+            </div>
+        </div>
+
+        <!-- Floating chat preview -->
+        <div class="chat-preview" id="chat-preview">
+            <div class="preview-header">
+                <div class="preview-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="preview-title">
+                    <i class="fa-solid fa-robot"></i> Nexus AI — Chat
+                </span>
+                <span class="preview-provider-badge">Gemini · 2.5 Flash</span>
+            </div>
+            <div class="preview-body" id="preview-body">
+                <!-- Slides cycle through JS -->
+                <div class="preview-slide active" id="slide-0">
+                    <div class="preview-mode-tag purple"><i class="fa-solid fa-circle-question"></i> Q&amp;A Mode</div>
+                    <div class="preview-msg user-preview">What is quantum computing?</div>
+                    <div class="preview-msg ai-preview">
+                        <i class="fa-solid fa-robot preview-icon"></i>
+                        <div>Quantum computing uses <strong>qubits</strong> that exist in multiple states simultaneously — solving problems exponentially faster than classical computers. ✨</div>
+                    </div>
+                </div>
+                <div class="preview-slide" id="slide-1">
+                    <div class="preview-mode-tag blue"><i class="fa-solid fa-align-left"></i> Summarize Mode</div>
+                    <div class="preview-msg user-preview">Summarize: "AI is transforming every industry from healthcare to finance…"</div>
+                    <div class="preview-msg ai-preview">
+                        <i class="fa-solid fa-robot preview-icon"></i>
+                        <div><strong>Key Points:</strong><br>• AI is reshaping major industries<br>• Healthcare &amp; finance lead adoption<br>• Efficiency gains are significant 📋</div>
+                    </div>
+                </div>
+                <div class="preview-slide" id="slide-2">
+                    <div class="preview-mode-tag pink"><i class="fa-solid fa-wand-magic-sparkles"></i> Creative Mode</div>
+                    <div class="preview-msg user-preview">Write a short poem about the ocean at night</div>
+                    <div class="preview-msg ai-preview">
+                        <i class="fa-solid fa-robot preview-icon"></i>
+                        <div><em>The moon spills silver on the tide,<br>Where stars and secrets choose to hide…</em> 🌊✨</div>
+                    </div>
+                </div>
+                <div class="preview-typing" id="preview-typing">
+                    <span class="dot-t"></span><span class="dot-t"></span><span class="dot-t"></span>
+                </div>
+            </div>
+            <!-- Slide indicators -->
+            <div class="preview-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Everything you need, <br><span class="gradient-text">in one place</span></h2>
+                <p class="section-subtitle">Three powerful AI modes designed for every kind of task — from instant facts to creative masterpieces.</p>
+            </div>
+
+            <!-- Feature 1: Q&A — full width with details -->
+            <div class="feature-expanded" id="feature-qa">
+                <div class="feature-exp-content">
+                    <div class="feature-exp-header">
+                        <div class="feature-icon-wrap purple large">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <div>
+                            <h3>Answer Questions</h3>
+                            <p class="feature-exp-sub">Get instant, well-structured answers on any topic</p>
+                        </div>
+                    </div>
+                    <p class="feature-exp-desc">
+                        Whether you're curious about science, history, technology, math, or everyday life — Nexus AI delivers precise, well-structured answers in seconds. Powered by the best available LLM, each response is tailored to your chosen style: concise bullet points, detailed explanations, or casual conversation.
+                    </p>
+                    <div class="feature-use-cases">
+                        <span class="use-case-tag"><i class="fa-solid fa-flask"></i> Science &amp; Research</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-code"></i> Coding Help</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-calculator"></i> Math Problems</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-globe"></i> General Knowledge</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-briefcase"></i> Business Queries</span>
+                    </div>
+                    <ul class="feature-checklist">
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Factual & accurate</strong> — Cross-verified across top LLMs (Groq, Gemini, Cohere)</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Multiple prompt styles</strong> — Choose concise, detailed, Socratic, or casual</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Context-aware follow-ups</strong> — Remembers your conversation history</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Markdown support</strong> — Code blocks, lists, and formatted responses</li>
+                    </ul>
+                </div>
+                <div class="feature-exp-demo">
+                    <div class="demo-card purple-demo">
+                        <div class="demo-label">Example</div>
+                        <div class="demo-q"><i class="fa-solid fa-user"></i> How does HTTPS encryption work?</div>
+                        <div class="demo-a">
+                            <i class="fa-solid fa-robot"></i>
+                            <div>
+                                HTTPS uses <strong>TLS (Transport Layer Security)</strong> to encrypt data between your browser and server in 3 steps:<br><br>
+                                <span class="demo-step">① Handshake</span> — Browser & server agree on encryption method<br>
+                                <span class="demo-step">② Certificate</span> — Server proves identity via SSL cert<br>
+                                <span class="demo-step">③ Encrypted tunnel</span> — All data flows securely 🔒
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2: Summarize -->
+            <div class="feature-expanded reverse" id="feature-summarize">
+                <div class="feature-exp-content">
+                    <div class="feature-exp-header">
+                        <div class="feature-icon-wrap blue large">
+                            <i class="fa-solid fa-align-left"></i>
+                        </div>
+                        <div>
+                            <h3>Summarize Text</h3>
+                            <p class="feature-exp-sub">Transform walls of text into crisp, clear summaries</p>
+                        </div>
+                    </div>
+                    <p class="feature-exp-desc">
+                        Paste any article, research paper, email thread, meeting notes, or web content and Nexus AI extracts the essential points in seconds. Save hours of reading time with structured summaries that highlight key insights, action items, and conclusions.
+                    </p>
+                    <div class="feature-use-cases">
+                        <span class="use-case-tag"><i class="fa-solid fa-newspaper"></i> News Articles</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-graduation-cap"></i> Research Papers</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-envelope"></i> Long Emails</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-video"></i> Meeting Notes</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-book"></i> Book Chapters</span>
+                    </div>
+                    <ul class="feature-checklist">
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Bullet-point format</strong> — Scannable, structured output every time</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Key insight extraction</strong> — Identifies the most critical information</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Length-aware</strong> — Adapts summary depth to your input size</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Action items</strong> — Flags next steps and decisions for you</li>
+                    </ul>
+                </div>
+                <div class="feature-exp-demo">
+                    <div class="demo-card blue-demo">
+                        <div class="demo-label most-used">⭐ Most Used</div>
+                        <div class="demo-q"><i class="fa-solid fa-user"></i> Summarize this 2000-word article about climate change…</div>
+                        <div class="demo-a">
+                            <i class="fa-solid fa-robot"></i>
+                            <div>
+                                <strong>Key Takeaways:</strong><br>
+                                • Global temps up <strong>1.1°C</strong> since pre-industrial era<br>
+                                • Renewables now cheaper than fossil fuels in 80% of markets<br>
+                                • <strong>Tipping points</strong> risk irreversible change past 1.5°C<br>
+                                • Policy action window: <span class="demo-step">2025–2035</span> is critical 🌍
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Creative -->
+            <div class="feature-expanded" id="feature-creative">
+                <div class="feature-exp-content">
+                    <div class="feature-exp-header">
+                        <div class="feature-icon-wrap pink large">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h3>Creative Content</h3>
+                            <p class="feature-exp-sub">Unleash AI creativity for any writing task imaginable</p>
+                        </div>
+                    </div>
+                    <p class="feature-exp-desc">
+                        From short stories and poems to marketing copy, product descriptions, and social media posts — Nexus AI's Creative mode transforms your ideas into polished writing. Choose your tone, style, and genre, and let the AI take your rough concept to a compelling piece.
+                    </p>
+                    <div class="feature-use-cases">
+                        <span class="use-case-tag"><i class="fa-solid fa-pen-nib"></i> Stories &amp; Poetry</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-bullhorn"></i> Marketing Copy</span>
+                        <span class="use-case-tag"><i class="fa-brands fa-instagram"></i> Social Posts</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-lightbulb"></i> Brainstorming</span>
+                        <span class="use-case-tag"><i class="fa-solid fa-file-alt"></i> Cover Letters</span>
+                    </div>
+                    <ul class="feature-checklist">
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Multiple genres</strong> — Fiction, poetry, humor, professional, and more</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Tone adjustment</strong> — From formal to whimsical with a single style switch</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>100% original</strong> — Fresh, unique content every single time</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>Iterative refinement</strong> — Ask follow-ups to refine and polish</li>
+                    </ul>
+                </div>
+                <div class="feature-exp-demo">
+                    <div class="demo-card pink-demo">
+                        <div class="demo-label">Example</div>
+                        <div class="demo-q"><i class="fa-solid fa-user"></i> Write a product tagline for a productivity app</div>
+                        <div class="demo-a">
+                            <i class="fa-solid fa-robot"></i>
+                            <div>
+                                Here are <strong>3 options</strong> for you:<br><br>
+                                <span class="demo-step">① Bold:</span> "Stop managing time. Start owning it."<br>
+                                <span class="demo-step">② Friendly:</span> "Get more done, stress less, live more."<br>
+                                <span class="demo-step">③ Premium:</span> "Precision productivity, crafted for you." ✨
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works — Expanded -->
+    <section class="how-section" id="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Simple Flow</span>
+                <h2 class="section-title">From idea to answer in <span class="gradient-text">seconds</span></h2>
+                <p class="section-subtitle">Nexus AI is designed to be zero-friction. No accounts, no setup — just open and go.</p>
+            </div>
+
+            <!-- Timeline style steps -->
+            <div class="how-timeline" id="how-timeline">
+
+                <div class="timeline-step" id="step-1">
+                    <div class="timeline-left">
+                        <div class="timeline-num">01</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon purple-icon">
+                            <i class="fa-solid fa-hand-pointer"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Choose Your Mode</h3>
+                            <p>Select one of three AI modes from the sidebar: <strong>Answer Questions</strong>, <strong>Summarize Text</strong>, or <strong>Creative Content</strong>. Each mode is optimized for a different type of task.</p>
+                            <div class="timeline-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-circle-question" style="color:#a78bfa;"></i>
+                                    <span><strong>Q&A</strong> — Best for facts, research, coding, and explanations</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-align-left" style="color:#93c5fd;"></i>
+                                    <span><strong>Summarize</strong> — Best for long documents, articles, and emails</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-wand-magic-sparkles" style="color:#f9a8d4;"></i>
+                                    <span><strong>Creative</strong> — Best for writing, brainstorming, and storytelling</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-step" id="step-2">
+                    <div class="timeline-left">
+                        <div class="timeline-num">02</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon blue-icon">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Pick a Prompt Style</h3>
+                            <p>Fine-tune how Nexus AI responds by selecting a <strong>Prompt Style</strong> from the sidebar. Each mode offers multiple styles that change the tone, format, and depth of the response.</p>
+                            <div class="timeline-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-list" style="color:#93c5fd;"></i>
+                                    <span><strong>Concise</strong> — Short, direct answers with no fluff</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-book-open" style="color:#93c5fd;"></i>
+                                    <span><strong>Detailed</strong> — In-depth explanations with examples and context</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-comments" style="color:#93c5fd;"></i>
+                                    <span><strong>Socratic / Casual</strong> — Guided or conversational tone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-step" id="step-3">
+                    <div class="timeline-left">
+                        <div class="timeline-num">03</div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon green-icon">
+                            <i class="fa-solid fa-keyboard"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Type Your Prompt</h3>
+                            <p>Enter your question, paste a block of text, or describe what you want to create. Use the text box at the bottom — hit <kbd>Enter</kbd> or click the send button.</p>
+                            <div class="timeline-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-lightbulb" style="color:#34d399;"></i>
+                                    <span><strong>Tip:</strong> Be specific — "Explain photosynthesis for a 10-year-old" beats just "photosynthesis"</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-rotate-right" style="color:#34d399;"></i>
+                                    <span><strong>Follow-ups work!</strong> Ask "Can you simplify that?" or "Give me an example"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-step" id="step-4">
+                    <div class="timeline-left">
+                        <div class="timeline-num">04</div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon orange-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Get Your Answer — Instantly</h3>
+                            <p>Nexus routes your request through its <strong>Smart LLM Router</strong>, which automatically picks the fastest available AI provider. If one hits a rate limit, it silently falls back to the next — you always get a response.</p>
+                            <div class="timeline-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-shuffle" style="color:#fb923c;"></i>
+                                    <span><strong>Auto-failover</strong> — Gemini → Groq → Cohere → HuggingFace</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-thumbs-up" style="color:#fb923c;"></i>
+                                    <span><strong>Rate each response</strong> — Your feedback improves future results</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-file-code" style="color:#fb923c;"></i>
+                                    <span><strong>Markdown rendered</strong> — Code, lists, and bold text display beautifully</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /how-timeline -->
+        </div>
+    </section>
+
+    <!-- Providers Section -->
+    <section class="providers-section" id="providers">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Powered By</span>
+                <h2 class="section-title">The best AI models, <span class="gradient-text">all in one place</span></h2>
+                <p class="section-subtitle">Nexus AI's Smart Router automatically selects the fastest, best available provider — with seamless fallback.</p>
+            </div>
+            <div class="providers-grid" id="providers-grid">
+                <div class="provider-card" id="prov-gemini">
+                    <div class="prov-icon"><i class="fa-solid fa-gem" style="color:#4285f4;"></i></div>
+                    <h4>Google Gemini</h4>
+                    <p>Google's most capable model for complex reasoning and multimodal tasks.</p>
+                    <span class="prov-badge primary">Primary</span>
+                </div>
+                <div class="provider-card" id="prov-groq">
+                    <div class="prov-icon"><i class="fa-solid fa-fire-flame-curved" style="color:#ff7a00;"></i></div>
+                    <h4>Groq</h4>
+                    <p>Blazing-fast inference with Llama 3 &amp; Mixtral. 14,400 free requests/day.</p>
+                    <span class="prov-badge secondary">Fallback #1</span>
+                </div>
+                <div class="provider-card" id="prov-cohere">
+                    <div class="prov-icon"><i class="fa-solid fa-layer-group" style="color:#39d3c8;"></i></div>
+                    <h4>Cohere</h4>
+                    <p>Enterprise-grade Command R model, optimized for reading and summarization.</p>
+                    <span class="prov-badge secondary">Fallback #2</span>
+                </div>
+                <div class="provider-card" id="prov-hf">
+                    <div class="prov-icon"><i class="fa-solid fa-face-smile" style="color:#ffd21e;"></i></div>
+                    <h4>HuggingFace</h4>
+                    <p>Open-source community models via Inference API — always a fallback available.</p>
+                    <span class="prov-badge tertiary">Fallback #3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta-section">
+        <div class="cta-glow"></div>
+        <div class="section-container cta-container">
+            <h2 class="cta-title">Ready to experience <span class="gradient-text">Nexus AI?</span></h2>
+            <p class="cta-subtitle">No sign-up required. No credit card. Just open the app and start exploring.</p>
+            <div class="cta-actions">
+                <a href="/chat" class="btn-primary large" id="cta-launch-btn">
+                    <i class="fa-solid fa-rocket"></i>
+                    Launch Nexus AI
+                </a>
+                <div class="cta-note">
+                    <i class="fa-solid fa-lock"></i> Free to use &nbsp;·&nbsp;
+                    <i class="fa-solid fa-shield-halved"></i> No data stored &nbsp;·&nbsp;
+                    <i class="fa-solid fa-bolt"></i> Instant responses
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>Nexus AI</span>
+                </div>
+                <p class="footer-tagline">Intelligent conversations, powered by the best AI models available — with zero setup.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/mohantakumarganesh-alt/nexus-ai-assistant" target="_blank" rel="noopener" class="social-link" id="social-github" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ganeshkumarmohanta" target="_blank" rel="noopener" class="social-link" id="social-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/chat" id="footer-launch">Launch App</a></li>
+                    <li><a href="#features" id="footer-features">Features</a></li>
+                    <li><a href="#how-it-works" id="footer-how">How It Works</a></li>
+                    <li><a href="#providers" id="footer-providers-link">AI Providers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>AI Providers</h4>
+                <ul>
+                    <li><a href="https://console.groq.com" target="_blank" rel="noopener" id="footer-groq">Groq Console</a></li>
+                    <li><a href="https://aistudio.google.com" target="_blank" rel="noopener" id="footer-gemini">Google AI Studio</a></li>
+                    <li><a href="https://dashboard.cohere.com" target="_blank" rel="noopener" id="footer-cohere">Cohere Dashboard</a></li>
+                    <li><a href="https://huggingface.co" target="_blank" rel="noopener" id="footer-hf">HuggingFace</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#" id="footer-docs">Documentation</a></li>
+                    <li><a href="/privacy" id="footer-privacy">Privacy Policy</a></li>
+                    <li><a href="/terms" id="footer-terms">Terms of Service</a></li>
+                    <li><a href="https://github.com/mohantakumarganesh-alt/nexus-ai-assistant" target="_blank" rel="noopener" id="footer-github-link"><i class="fa-brands fa-github" style="margin-right:6px;"></i>GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/ganeshkumarmohanta" target="_blank" rel="noopener" id="footer-linkedin-link"><i class="fa-brands fa-linkedin-in" style="margin-right:6px;"></i>LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Nexus AI. Built with <i class="fa-solid fa-heart" style="color:#f87171;"></i> using Flask &amp; multi-LLM intelligence.</p>
+            <p class="footer-powered">
+                <span class="provider-pill">Gemini</span>
+                <span class="provider-pill">Groq</span>
+                <span class="provider-pill">Cohere</span>
+                <span class="provider-pill">HuggingFace</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
+</body>
+</html>
