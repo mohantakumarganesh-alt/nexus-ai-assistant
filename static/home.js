@@ -213,3 +213,14 @@ document.querySelectorAll('a[href="/chat"]').forEach(link => {
         }, 4000);
     });
 });
+
+// ── 10. Handle Browser Back Button (BFCache) ────────
+window.addEventListener('pageshow', function(e) {
+    // If the page was loaded from the browser's back-forward cache
+    if (e.persisted) {
+        // Remove the active animation overlay so the page is usable again
+        document.querySelectorAll('.page-transition-overlay').forEach(el => {
+            el.remove();
+        });
+    }
+});
